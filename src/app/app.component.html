@@ -1,14 +1,14 @@
 <div
   id="background"
-  class="flex h-screen flex-col items-center justify-center gap-16 bg-cover"
+  class="flex h-screen flex-col items-center justify-center gap-8 bg-cover lg:gap-16"
 >
   <h1
-    class="font-heading text-8xl font-bold text-white select-none text-shadow-lg"
+    class="font-heading text-center text-8xl font-bold text-white select-none text-shadow-lg"
   >
     Hvornår kommer Sarah?
   </h1>
 
-  <div class="flex gap-8">
+  <div class="flex flex-wrap justify-center gap-4 lg:gap-8">
     @let _timeLeft = timeLeft();
 
     @if (_timeLeft !== undefined) {
