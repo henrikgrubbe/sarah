@@ -13,22 +13,40 @@
 
     @if (_timeLeft !== undefined) {
       @if (_timeLeft.months; as value) {
-        <app-countdown-unit unit="måneder" [value]="value" />
+        <app-countdown-unit
+          [unit]="{ singular: 'måned', plural: 'måneder' }"
+          [value]="value"
+        />
       }
 
       @if (_timeLeft.weeks; as value) {
-        <app-countdown-unit unit="uger" [value]="value" />
+        <app-countdown-unit
+          [unit]="{ singular: 'uge', plural: 'uger' }"
+          [value]="value"
+        />
       }
 
       @if (_timeLeft.days; as value) {
-        <app-countdown-unit unit="dage" [value]="value" />
+        <app-countdown-unit
+          [unit]="{ singular: 'dag', plural: 'dage' }"
+          [value]="value"
+        />
       }
 
-      <app-countdown-unit unit="timer" [value]="_timeLeft.hours" />
+      <app-countdown-unit
+        [unit]="{ singular: 'time', plural: 'timer' }"
+        [value]="_timeLeft.hours"
+      />
 
-      <app-countdown-unit unit="minutter" [value]="_timeLeft.minutes" />
+      <app-countdown-unit
+        [unit]="{ singular: 'minut', plural: 'minutter' }"
+        [value]="_timeLeft.minutes"
+      />
 
-      <app-countdown-unit unit="sekunder" [value]="_timeLeft.seconds" />
+      <app-countdown-unit
+        [unit]="{ singular: 'sekund', plural: 'sekunder' }"
+        [value]="_timeLeft.seconds"
+      />
     }
   </div>
 </div>

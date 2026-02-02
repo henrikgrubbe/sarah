@@ -6,5 +6,5 @@
       {{ value() }}
     </span>
   </span>
-  {{ unit() }}
+  {{ value() | plural: unit().singular : unit().plural }}
 </div>
