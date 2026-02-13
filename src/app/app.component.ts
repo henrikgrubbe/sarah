@@ -26,7 +26,7 @@ export class AppComponent {
   private readonly visits = signal(
     [
       {
-        from: '2026-02-13T10:00:00',
+        from: '2026-02-13T11:15:00',
         to: '2026-02-15T12:00:00',
       },
     ]
