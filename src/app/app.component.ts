@@ -23,11 +23,21 @@ interface Visit {
   imports: [CountdownUnitComponent],
 })
 export class AppComponent {
+  private readonly now = signal(DateTime.now());
+
   private readonly visits = signal(
     [
       {
         from: '2026-02-13T11:15:00',
         to: '2026-02-15T12:00:00',
+      },
+      {
+        from: '2026-03-21T10:00:00',
+        to: '2026-03-21T17:00:00',
+      },
+      {
+        from: '2026-08-02T10:00:00',
+        to: '2026-08-09T12:00:00',
       },
     ]
       .map(({ from, to }) => ({
@@ -35,17 +45,23 @@ export class AppComponent {
         to: DateTime.fromISO(to, { zone: ZONE }),
       }))
       .filter((visit): visit is Visit => visit.from.isValid && visit.to.isValid)
-      .map(({ from, to }) => ({
-        from: from.setLocale(LOCALE),
-        to: to.setLocale(LOCALE),
-      })),
+      .map(
+        ({ from, to }): Visit => ({
+          from: from.setLocale(LOCALE),
+          to: to.setLocale(LOCALE),
+        }),
+      ),
+  );
+
+  private readonly futureVisits = computed(() =>
+    this.visits().filter(
+      (visit) => visit.from.diff(this.now()).toMillis() >= 0,
+    ),
   );
 
   private readonly earliestVisit = computed(() =>
-    DateTime.min(...this.visits().map((visit) => visit.from)),
+    DateTime.min(...this.futureVisits().map((visit) => visit.from)),
   );
-
-  private readonly now = signal(DateTime.now());
 
   protected readonly timeLeft = computed(() =>
     this.earliestVisit()?.diff(this.now())?.shiftToAll(),

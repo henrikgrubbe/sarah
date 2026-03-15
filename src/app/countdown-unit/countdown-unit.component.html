@@ -3,7 +3,11 @@
 >
   <span class="text-5xl">
     <span class="font-mono">
-      {{ value() }}
+      @if (leftPad()) {
+        {{ value() | number: "2.0-0" }}
+      } @else {
+        {{ value() }}
+      }
     </span>
   </span>
   {{ value() | plural: unit().singular : unit().plural }}

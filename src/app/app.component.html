@@ -11,41 +11,45 @@
   <div class="flex flex-wrap justify-center gap-4 lg:gap-8">
     @let _timeLeft = timeLeft();
 
-    @if (_timeLeft !== undefined) {
+    @if (_timeLeft === undefined) {
+      <h2>Der er desværre ingen aftaler for hvornår Sarah kommer</h2>
+    } @else {
       @if (_timeLeft.months; as value) {
         <app-countdown-unit
-          [unit]="{ singular: 'måned', plural: 'måneder' }"
           [value]="value"
+          [unit]="{ singular: 'måned', plural: 'måneder' }"
         />
       }
 
       @if (_timeLeft.weeks; as value) {
         <app-countdown-unit
-          [unit]="{ singular: 'uge', plural: 'uger' }"
           [value]="value"
+          [unit]="{ singular: 'uge', plural: 'uger' }"
         />
       }
 
       @if (_timeLeft.days; as value) {
         <app-countdown-unit
-          [unit]="{ singular: 'dag', plural: 'dage' }"
           [value]="value"
+          [unit]="{ singular: 'dag', plural: 'dage' }"
         />
       }
 
       <app-countdown-unit
-        [unit]="{ singular: 'time', plural: 'timer' }"
         [value]="_timeLeft.hours"
+        [unit]="{ singular: 'time', plural: 'timer' }"
       />
 
       <app-countdown-unit
-        [unit]="{ singular: 'minut', plural: 'minutter' }"
         [value]="_timeLeft.minutes"
+        [unit]="{ singular: 'minut', plural: 'minutter' }"
+        [leftPad]="true"
       />
 
       <app-countdown-unit
-        [unit]="{ singular: 'sekund', plural: 'sekunder' }"
         [value]="_timeLeft.seconds"
+        [unit]="{ singular: 'sekund', plural: 'sekunder' }"
+        [leftPad]="true"
       />
     }
   </div>

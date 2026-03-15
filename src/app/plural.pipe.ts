@@ -5,6 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PluralPipe implements PipeTransform {
   transform(number: number, singular: string, plural: string): string {
-    return number === 1 ? singular : plural;
+    return Math.abs(number) === 1 ? singular : plural;
   }
 }
