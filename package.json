@@ -1,13 +1,13 @@
 {
   "name": "sarah",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "start": "ng serve",
     "build": "ng build",
     "lint": "ng lint",
     "lint:fix": "npm run lint -- --fix"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "21.2.4",
     "@angular/compiler": "21.2.4",
@@ -23,10 +23,11 @@
     "@angular/build": "21.2.2",
     "@angular/cli": "21.2.2",
     "@angular/compiler-cli": "21.2.4",
+    "@eslint/js": "10.0.1",
     "@tailwindcss/postcss": "4.2.1",
     "@types/luxon": "3.7.1",
     "angular-eslint": "21.3.0",
-    "eslint": "9.39.4",
+    "eslint": "10.0.3",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-prettier": "5.5.5",
     "postcss": "8.5.8",
